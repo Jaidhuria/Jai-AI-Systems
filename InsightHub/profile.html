@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login Page with Social Login & Forgot Password</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .login-container {
+    background-color: #fff;
+    border: 2px solid #2e8b57;
+    border-radius: 8px;
+    padding: 40px;
+    width: 360px;
+    box-shadow: 0 0 15px rgba(0, 149, 121, 0.3);
+    box-sizing: border-box;
+    position: relative;
+  }
+  .login-container h2 {
+    color: #2e8b57;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2e8b57;
+    font-weight: bold;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #2e8b57;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  button.login-btn {
+    width: 100%;
+    background-color: #2e8b57;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  button.login-btn:hover {
+    background-color: #2e8b57;
+  }
+  .social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 5px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+  }
+  .social-btn svg {
+    height: 20px;
+    width: 20px;
+    margin-right: 8px;
+  }
+  .social-btn.facebook {
+    background-color: #3b5998;
+  }
+  .social-btn.facebook:hover {
+    background-color: #2d4373;
+  }
+  .social-btn.google {
+    background-color: #db4437;
+  }
+  .social-btn.google:hover {
+    background-color: #a33224;
+  }
+  .forgot-password {
+    text-align: center;
+    margin-top: 12px;
+  }
+  .forgot-password a {
+    color: #2e8b57;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 320px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .modal-content h3 {
+    color: #2e8b57;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .modal-content input[type="email"] {
+    margin-bottom: 20px;
+  }
+  .modal-content button {
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .modal-content button:hover {
+    background-color: #2e8b57;
+  }
+  .close-btn {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #009579;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form action="/login" method="post">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter username" required />
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required />
+      
+      <button type="submit" class="login-btn">Log In</button>
+    </form>
+
+    <div class="social-login">
+      <a href="#" class="social-btn google" aria-label="Login with Google">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 533.5 544.3" >
+          <path fill="#fff" d="M533.5 278.4c0-17.4-1.5-34.1-4.3-50.4H272v95.5h147.3c-6.3 33.7-25.3 62.3-54.2 81.5v67.7h87.6c51.3-47.3 80.8-117 80.8-194.3z"/>
+          <path fill="#4285f4" d="M272 544.3c73.7 0 135.6-24.4 180.8-66.1l-87.6-67.7c-24.3 16.3-55.3 25.9-93.2 25.9-71.6 0-132.3-48.3-154.1-113.2H27.1v70.9c45.1 89.3 137.3 150.2 244.9 150.2z"/>
+          <path fill="#34a853" d="M117.9 324.9c-10.6-31.7-10.6-65.9 0-97.6v-70.9H27.1c-39.3 77.9-39.3 170.5 0 248.4l90.8-79.9z"/>
+          <path fill="#fbbc04" d="M272 107.7c39.9 0 75.7 13.7 103.9 40.5l77.9-77.9C405.4 24.4 343.5 0 272 0 164.4 0 72.2 60.9 27.1 150.2l90.8 70.9c21.8-64.9 82.5-113.4 154.1-113.4z"/>
+        </svg>
+        Google
+      </a>
+      <a href="#" class="social-btn facebook" aria-label="Login with Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" >
+          <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.59l-.467 3.622h-3.123V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"/>
+        </svg>
+        Facebook
+      </a>
+    </div>
+
+    <div class="forgot-password">
+      <a id="forgotLink">Forgot your password?</a>
+    </div>
+  </div>
+
+  <!-- Modal for Forgot Password -->
+  <div id="forgotModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal" aria-label="Close">&times;</span>
+      <h3 id="modalTitle">Reset Password</h3>
+      <p>Enter your email address to reset your password.</p>
+      <input type="email" id="resetEmail" placeholder="Email address" required />
+      <button id="sendReset">Send Reset Link</button>
+    </div>
+  </div>
+
+<script>
+  const forgotLink = document.getElementById('forgotLink');
+  const modal = document.getElementById('forgotModal');
+  const closeModal = document.getElementById('closeModal');
+  const sendReset = document.getElementById('sendReset');
+  const resetEmail = document.getElementById('resetEmail');
+
+  // Open modal on clicking forgot password
+  forgotLink.addEventListener('click', () => {
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+    resetEmail.focus();
+  });
+
+  // Close modal when clicking close button or outside modal content
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  });
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Handle send reset link button
+  sendReset.addEventListener('click', () => {
+    const email = resetEmail.value.trim();
+    if (email === '') {
+      alert('Please enter your email address.');
+      resetEmail.focus();
+      return;
+    }
+    // Here you would typically send the email to your backend to process the reset
+    alert(`If an account with ${email} exists, a reset link will be sent.`);
+    resetEmail.value = '';
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+  });
+</script>
+</body>
+</html>
