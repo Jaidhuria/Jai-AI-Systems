@@ -1,0 +1,20 @@
+{
+  "name": "health-login-stack",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n backend,frontend -c blue,magenta \"npm run dev --prefix backend\" \"wait-on tcp:127.0.0.1:5000 && npm start --prefix frontend\"",
+    "start": "npm run build --prefix frontend && cross-env SERVE_FRONTEND=1 npm run start --prefix backend",
+    "frontend": "npm start --prefix frontend",
+    "backend": "npm run dev --prefix backend"
+  },
+  "dependencies": {
+    "firebase": "^12.9.0",
+    "nodemailer": "^8.0.1",
+    "otp-generator": "^4.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "wait-on": "^8.0.1"
+  }
+}

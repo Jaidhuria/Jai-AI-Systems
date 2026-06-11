@@ -1,0 +1,245 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+.login-card {
+  width: 420px;
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  background: white;
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 5px;
+  font-size: 26px;
+  color: #111827;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* Social Buttons */
+.social-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  background: #f9fafb;
+}
+
+.social-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.google svg {
+  color: #ea4335;
+}
+
+.facebook svg {
+  color: #1877f2;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider span {
+  margin: 0 10px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Input */
+.input-group {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Visually hidden (for accessible labels) */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Password */
+.password-field {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  cursor: pointer;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CAPTCHA */
+.captcha-wrapper {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Form row (remember + forgot) */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.remember {
+  font-size: 13px;
+  color: #6b7280;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.forgot-link {
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.forgot-link:hover,
+.forgot-link:focus {
+  text-decoration: underline;
+}
+
+/* Error */
+.error-text {
+  font-size: 13px;
+  color: #dc2626;
+  margin-bottom: 10px;
+}
+
+/* Primary Button */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.primary-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  margin-top: 6px;
+}
+
+/* tiny spinner inside buttons */
+.btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  margin-right: 8px;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Signup */
+.signup-text {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.signup-text a {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    width: 90%;
+    padding: 25px;
+  }
+}
